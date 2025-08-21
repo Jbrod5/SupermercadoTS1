@@ -27,9 +27,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['crear_empleado'])) {
         move_uploaded_file($_FILES['fotografia']['tmp_name'], $fotografia_ruta);
     }
 
-    $stmt = $conexion->prepare("INSERT INTO empleado (nombre, salario, id_rol, telefono, correo, contrasena, estado_activo, fotografia) VALUES (?, ?, ?, ?, ?, ?, TRUE, ?)");
-    $stmt->bind_param("sdisiss", $nombre, $salario, $id_rol, $telefono, $correo, $contrasena, $fotografia_ruta);
-    $stmt->execute();
+    // Insertar en DB
+    $stmt = $conexion->prepare("INSERT INTO empleado 
+        (nombre, salario, id_rol, telefono, correo, contrasena, estado_activo, fotografia) 
+        VALUES (?, ?, ?, ?, ?, ?, TRUE, ?)");
+
+    // s = string, d = double, i = int
+    $stmt->bind_param("sdissss", 
+        $nombre, 
+        $salario, 
+        $id_rol, 
+        $telefono, 
+        $correo, 
+        $contrasena, 
+        $fotografia_ruta
+    );
+
+    if (!$stmt->execute()) {
+        echo "Error al insertar: " . $stmt->error;
+    }
     $stmt->close();
 }
 
@@ -70,54 +86,44 @@ $result = $conexion->query("SELECT e.id_empleado, e.nombre, e.salario, r.nombre_
         <form method="post" action="" enctype="multipart/form-data" class="form-crear-empleado">
             <input type="hidden" name="crear_empleado" value="1">
 
-            <div class="fila">
-                <div class="campo">
-                    <label>Nombre:</label>
-                    <input type="text" name="nombre" required>
-                </div>
-                <div class="campo">
-                    <label>Salario:</label>
-                    <input type="number" step="0.01" name="salario" required>
-                </div>
+            <div class="campo">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" required>
+            </div>
+            <div class="campo">
+                <label>Salario:</label>
+                <input type="number" step="0.01" name="salario" required>
             </div>
 
-            <div class="fila">
-                <div class="campo">
-                    <label>Rol:</label>
-                    <select name="id_rol">
-                        <?php
-                        $roles = $conexion->query("SELECT id_rol, nombre_rol FROM rol");
-                        while($r = $roles->fetch_assoc()){
-                            echo "<option value='{$r['id_rol']}'>{$r['nombre_rol']}</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="campo">
-                    <label>Telefono:</label>
-                    <input type="number" name="telefono">
-                </div>
+            <div class="campo">
+                <label>Rol:</label>
+                <select name="id_rol">
+                    <?php
+                    $roles = $conexion->query("SELECT id_rol, nombre_rol FROM rol");
+                    while($r = $roles->fetch_assoc()){
+                        echo "<option value='{$r['id_rol']}'>{$r['nombre_rol']}</option>";
+                    }
+                    ?>
+                </select>
             </div>
-            
-
-            <div class="fila">
-                <div class="campo">
-                    <label>Correo:</label>
-                    <input type="email" name="correo">
-                </div>
-                <div class="campo">
-                    <label>Contrasena:</label>
-                    <input type="text" name="contrasena" required>
-                </div>
-            </div>
-             <div class="fila">
-                <div class="campo">
-                    <label>Fotografía:</label>
-                    <input type="file" name="fotografia" accept="image/*">
-                </div>
+            <div class="campo">
+                <label>Telefono:</label>
+                <input type="number" name="telefono">
             </div>
 
-           
+            <div class="campo">
+                <label>Correo:</label>
+                <input type="email" name="correo">
+            </div>
+            <div class="campo">
+                <label>Contrasena:</label>
+                <input type="text" name="contrasena" required>
+            </div>
+
+            <div class="campo">
+                <label>Fotografía:</label>
+                <input type="file" name="fotografia" accept="image/*">
+            </div>
 
             <input type="submit" value="Crear">
         </form>
