@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['crear_empleado'])) {
     // Procesar fotografía
     $fotografia_ruta = NULL;
     if (isset($_FILES['fotografia']) && $_FILES['fotografia']['error'] == 0) {
-        $destino = '../uploads/';
+        $destino = '../uploads/Trabajadores'; //Para separar imagenes
         if (!is_dir($destino)) mkdir($destino, 0777, true);
         $fotografia_ruta = $destino . basename($_FILES['fotografia']['name']);
         move_uploaded_file($_FILES['fotografia']['tmp_name'], $fotografia_ruta);

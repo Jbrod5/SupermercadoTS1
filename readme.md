@@ -43,3 +43,9 @@ alias xampp='sudo /opt/lampp/manager-linux-x64.run'
 alias xampp-mysql='/opt/lampp/bin/mysql -u root -p'
 ```
 
+
+Un posible problema en linux puede ser la subida de imagenes, es necesario otorgar permisos a las carpetas:
+```
+chmod -R 755 /home/jorge/Teoría_Sistemas/SupermercadoTS1/uploads
+```
+
