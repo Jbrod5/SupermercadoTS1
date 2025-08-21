@@ -128,30 +128,44 @@ $result = $conexion->query("SELECT e.id_empleado, e.nombre, e.salario, r.nombre_
             <input type="submit" value="Crear">
         </form>
 
-        <h3>Empleados existentes</h3>
-        <table>
-            <tr>
-                <th>ID</th><th>Nombre</th><th>Salario</th><th>Rol</th><th>Telefono</th><th>Correo</th><th>Activo</th><th>Fotografía</th>
-            </tr>
-            <?php while($row = $result->fetch_assoc()): ?>
-                <tr>
-                    <td><?= $row['id_empleado'] ?></td>
-                    <td><?= $row['nombre'] ?></td>
-                    <td><?= $row['salario'] ?></td>
-                    <td><?= $row['nombre_rol'] ?></td>
-                    <td><?= $row['telefono'] ?></td>
-                    <td><?= $row['correo'] ?></td>
-                    <td><?= $row['estado_activo'] ? 'Si' : 'No' ?></td>
-                    <td>
-                        <?php if($row['fotografia']): ?>
-                            <img src="<?= $row['fotografia'] ?>" alt="Foto" style="width:50px;height:50px;object-fit:cover;border-radius:5px;">
-                        <?php else: ?>
-                            -
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-        </table>
+       <h3>Empleados existentes</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Salario</th>
+        <th>Rol</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Activo</th>
+        <th>Fotografía</th>
+        <th>Acciones</th>
+    </tr>
+    <?php while($row = $result->fetch_assoc()): ?>
+        <tr>
+            <td><?= $row['id_empleado'] ?></td>
+            <td><?= $row['nombre'] ?></td>
+            <td><?= $row['salario'] ?></td>
+            <td><?= $row['nombre_rol'] ?></td>
+            <td><?= $row['telefono'] ?></td>
+            <td><?= $row['correo'] ?></td>
+            <td><?= $row['estado_activo'] ? 'Si' : 'No' ?></td>
+            <td>
+                <?php if($row['fotografia']): ?>
+                    <img src="<?= $row['fotografia'] ?>" alt="Foto" style="width:50px;height:50px;object-fit:cover;border-radius:5px;">
+                <?php else: ?>
+                    -
+                <?php endif; ?>
+            </td>
+            <td>
+                <a href="editar_empleado.php?id=<?= $row['id_empleado'] ?>">
+                    <button>Editar</button>
+                </a>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</table>
+
     </div>
 </body>
 </html>
