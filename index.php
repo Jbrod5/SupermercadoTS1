@@ -51,16 +51,19 @@ $conexion->close();
 </head>
 
 <body>
-    <h2>Login de Empleado</h2>
-    <?php if(isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-    <form method="post" action="">
-        <label for="id_empleado">ID Empleado:</label><br>
-        <input type="number" name="id_empleado" required><br><br>
-        
-        <label for="contrasena">Contrasena:</label><br>
-        <input type="password" name="contrasena" required><br><br>
-        
-        <input type="submit" value="Ingresar">
-    </form>
+    <div class="contenedor">
+        <h2>Login de Empleado</h2>
+        <?php if(isset($error)) echo "<p class='error'>$error</p>"; ?>
+        <form method="post" action="">
+            <label for="id_empleado">ID Empleado:</label>
+            <input type="number" name="id_empleado" required>
+
+            <label for="contrasena">Contrasena:</label>
+            <input type="password" name="contrasena" required>
+
+            <input type="submit" value="Ingresar">
+        </form>
+    </div>
 </body>
+
 </html>

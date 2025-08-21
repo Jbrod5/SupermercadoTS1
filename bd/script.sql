@@ -41,7 +41,18 @@ VALUES (
     3, -- 3 corresponde a 'Gerente' en la tabla rol
     '12349876',
     'admin@supermercado.com',
-    'admin123', -- contrasena
+    'admin', -- contrasena
+    TRUE,
+    NULL
+);
+INSERT INTO empleado (nombre, salario, id_rol, telefono, correo, contrasena, estado_activo, fotografia) -- insertar un encargado de inventario para iniciar con el sistema :3
+VALUES (
+    'Armando Encargado Inventario',
+    8000.00,
+    2, -- 2 corresponde a Encargado Inv en la tabla rol
+    '12349876',
+    'encargadoinv@supermercado.com',
+    'inventario', -- contrasena
     TRUE,
     NULL
 );

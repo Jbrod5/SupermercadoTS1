@@ -1,36 +1,78 @@
-/* estilos.css */
+/* ===== Formulario de creación de empleado (solo para este formulario) ===== */
+.form-crear-empleado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* espacio entre los campos */
+    justify-content: space-between;
+}
+
+.form-crear-empleado label {
+    width: 48%; /* labels ocupan la mitad del ancho para alinearse */
+}
+
+.form-crear-empleado input[type="file"] {
+width: 100%;
+}
+.form-crear-empleado select{
+    width: 100%;
+}
+.form-crear-empleado input
+
+{
+    width: 48%; /* inputs ocupan la mitad del ancho, mismos que labels */
+}
+
+
+.form-crear-empleado input[type="submit"] {
+    width: 100%; /* el botón ocupa toda la fila */
+    margin-top: 10px;
+}
+
+
+
+/* ===== Body ===== */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
-    display: flex;
-    flex-direction: column; /* ahora los hijos se apilan */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 20px;
 }
 
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-h2 {
+/* ===== Titulos ===== */
+h2, h3 {
     text-align: center;
     color: #333;
+    margin-bottom: 15px;
 }
 
+/* ===== Formularios ===== */
 form {
     background-color: #fff;
     padding: 30px 40px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 300px;
+    width: 320px;
+    margin-bottom: 30px;
 }
 
 label {
     font-size: 14px;
     color: #555;
+    display: block;
+    margin-top: 10px;
 }
 
+input[type="text"],
 input[type="number"],
-input[type="password"] {
+input[type="password"],
+input[type="email"],
+select {
     width: 100%;
     padding: 10px 12px;
     margin: 6px 0 16px 0;
@@ -48,13 +90,50 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
+    transition: background-color 0.2s ease-in-out;
 }
 
 input[type="submit"]:hover {
     background-color: #357ab7;
 }
 
+/* ===== Tabla ===== */
+table {
+    width: 90%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: #4a90e2;
+    color: white;
+    font-weight: normal;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #e6f0ff;
+}
+
+/* ===== Parrafos ===== */
 p {
     text-align: center;
     font-size: 13px;
+    color: #666;
 }
+
+
+
