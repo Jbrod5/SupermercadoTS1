@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS Supermercado;
+CREATE DATABASE Supermercado;
+USE Supermercado;
+
+
+
 -- Utilizar roles que sean valores que apunten a esta tablaaa
 CREATE TABLE rol (
     id_rol INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,19 +29,19 @@ CREATE TABLE empleado (
     telefono BIGINT,
     correo VARCHAR(100) UNIQUE,
     contrasena VARCHAR(255) NOT NULL,
-    estado BOOLEAN DEFAULT TRUE,
+    estado_activo BOOLEAN DEFAULT TRUE, --
     fotografia VARCHAR(255),        -- ruta de la foto 
     FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
-INSERT INTO empleado (nombre, salario, id_rol, telefono, correo, contrasena, estado, fotografia) -- insertar un gerente para iniciar con el sistema :3
+INSERT INTO empleado (nombre, salario, id_rol, telefono, correo, contrasena, estado_activo, fotografia) -- insertar un gerente para iniciar con el sistema :3
 VALUES (
     'Pedro Administrador General',
     8000.00,
     3, -- 3 corresponde a 'Gerente' en la tabla rol
-    '1234-9876',
+    '12349876',
     'admin@supermercado.com',
-    'admin123', -- (luego podrías aplicar hash en la app, no guardar plano en DB)
+    'admin123', -- contrasena
     TRUE,
     NULL
 );

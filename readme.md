@@ -30,3 +30,16 @@ DocumentRoot "/home/jorge/Teoría_Sistemas"
 chmod -R 755 "/home/jorge/Teoría_Sistemas"
 chown -R jorge:jorge "/home/jorge/Teoría_Sistemas"
 ```
+
+
+Por comodidad también realicé enlaces simbolicos para xampp y sus utilidades
+1. Abrir el archivo zshrc para crear los enlaces: 
+```
+sudo ~/.zshrc
+```
+2. Al final del archivo colocar los enlaces:
+```
+alias xampp='sudo /opt/lampp/manager-linux-x64.run'
+alias xampp-mysql='/opt/lampp/bin/mysql -u root -p'
+```
+
