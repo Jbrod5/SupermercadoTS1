@@ -14,7 +14,7 @@ if ($id_rol == 3) {
     header("Location: ./gerencia/admin_dashboard.php");
     exit();
 } elseif ($id_rol == 2) {
-    header("Location: inventario_dashboard.php");
+    header("Location: ./inventario/inventario_dashboard.php");
     exit();
 } else {
     echo "Acceso no autorizado para tu rol.";

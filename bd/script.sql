@@ -80,9 +80,6 @@ CREATE TABLE producto (
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor)
 );
 
-
-
-
 -- inventario
 CREATE TABLE inventario (
     id_inventario INT AUTO_INCREMENT PRIMARY KEY,
@@ -91,6 +88,9 @@ CREATE TABLE inventario (
     fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
+
+
+
 
 -- ventas (una tabla aparte puede servir como lista de productos??), metodo de pago separado
 CREATE TABLE metodo_pago(
