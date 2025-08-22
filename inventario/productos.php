@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['crear_producto'])) {
     // Procesar imagen
     $imagen_ruta = NULL;
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $destino = '../uploads/Productos/';
+        $destino = '../uploads/Productos';
         if (!is_dir($destino)) mkdir($destino, 0777, true);
         $imagen_ruta = $destino . basename($_FILES['imagen']['name']);
         move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_ruta);
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_producto'])) {
 
     // Procesar imagen nueva
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $destino = '../uploads/Productos/';
+        $destino = '../uploads/Productos';
         if (!is_dir($destino)) mkdir($destino, 0777, true);
         $imagen_ruta = $destino . basename($_FILES['imagen']['name']);
         move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_ruta);
