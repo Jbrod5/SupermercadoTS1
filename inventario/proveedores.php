@@ -26,32 +26,35 @@ $proveedores = $conexion->query("SELECT * FROM proveedor");
     <link rel="stylesheet" href="../estilos.css">
 </head>
 <body>
-    <h2>Agregar Proveedor</h2>
-    <form method="post" action="">
-        <input type="hidden" name="crear_proveedor" value="1">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
-        <label>Teléfono:</label>
-        <input type="text" name="telefono">
-        <label>Correo:</label>
-        <input type="email" name="correo">
-        <label>Dirección:</label>
-        <input type="text" name="direccion">
-        <input type="submit" value="Guardar">
-    </form>
+    <div class="contenedor">
+        <h2>Agregar Proveedor</h2>
+        <form method="post" action="">
+            <input type="hidden" name="crear_proveedor" value="1">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+            <label>Teléfono:</label>
+            <input type="text" name="telefono">
+            <label>Correo:</label>
+            <input type="email" name="correo">
+            <label>Dirección:</label>
+            <input type="text" name="direccion">
+            <input type="submit" value="Guardar">
+        </form>
 
-    <h2>Lista de Proveedores</h2>
-    <table>
-        <tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Correo</th><th>Dirección</th></tr>
-        <?php while($p = $proveedores->fetch_assoc()): ?>
-            <tr>
-                <td><?= $p['id_proveedor'] ?></td>
-                <td><?= $p['nombre'] ?></td>
-                <td><?= $p['telefono'] ?></td>
-                <td><?= $p['correo'] ?></td>
-                <td><?= $p['direccion'] ?></td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
+        <h2>Lista de Proveedores</h2>
+        <table>
+            <tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Correo</th><th>Dirección</th></tr>
+            <?php while($p = $proveedores->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $p['id_proveedor'] ?></td>
+                    <td><?= $p['nombre'] ?></td>
+                    <td><?= $p['telefono'] ?></td>
+                    <td><?= $p['correo'] ?></td>
+                    <td><?= $p['direccion'] ?></td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
+    </div>
 </body>
+
 </html>
